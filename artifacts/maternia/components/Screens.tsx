@@ -43,15 +43,15 @@ const moodOptions = [
   { emoji: '😣', label: 'Difícil' },
 ];
 
-const quickActions: Array<{ title: string; subtitle: string; icon: keyof typeof Ionicons.glyphMap; route: string; tone: 'mint' | 'lilac' | 'beige' | 'card' }> = [
-  { title: 'Check-in diario', subtitle: 'Cuéntame cómo estás', icon: 'heart-outline', route: '/check-in', tone: 'lilac' },
-  { title: 'Mi bienestar', subtitle: 'Cuestionarios', icon: 'sparkles-outline', route: '/wellbeing', tone: 'mint' },
-  { title: 'Autocuidado', subtitle: 'Pausa para ti', icon: 'leaf-outline', route: '/selfcare', tone: 'beige' },
-  { title: 'Especialistas', subtitle: 'Apoyo cercano', icon: 'location-outline', route: '/map', tone: 'card' },
-  { title: 'Mis citas', subtitle: 'Organiza tus visitas', icon: 'calendar-outline', route: '/appointments', tone: 'card' },
-  { title: 'Recursos', subtitle: 'Información útil', icon: 'book-outline', route: '/resources', tone: 'lilac' },
-  { title: 'Apple Salud', subtitle: 'Tus dispositivos', icon: 'watch-outline', route: '/health', tone: 'mint' },
-  { title: 'Configuración', subtitle: 'Preferencias', icon: 'settings-outline', route: '/settings', tone: 'beige' },
+const quickActions: Array<{ title: string; icon: keyof typeof Ionicons.glyphMap; route: string; tone: 'mint' | 'lilac' | 'beige' | 'card' }> = [
+  { title: 'Check-in diario', icon: 'heart', route: '/check-in', tone: 'mint' },
+  { title: 'Mi bienestar', icon: 'sparkles', route: '/wellbeing', tone: 'lilac' },
+  { title: 'Autocuidado', icon: 'leaf', route: '/selfcare', tone: 'beige' },
+  { title: 'Especialistas', icon: 'location', route: '/map', tone: 'card' },
+  { title: 'Mis citas', icon: 'calendar', route: '/appointments', tone: 'card' },
+  { title: 'Recursos', icon: 'book', route: '/resources', tone: 'lilac' },
+  { title: 'Apple Salud', icon: 'watch', route: '/health', tone: 'mint' },
+  { title: 'Configuración', icon: 'settings', route: '/settings', tone: 'card' },
 ];
 
 const phqQuestions = [
@@ -218,21 +218,19 @@ export function HomeView() {
     <Screen>
       <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 18 }}>
         <BrandMark size={58} />
-        <View style={{ marginLeft: 12, flex: 1 }}><Text style={{ color: colors.mutedForeground, fontSize: 13 }}>Tu espacio MaternIA</Text><Text style={[styles.headerTitle, { color: colors.text, fontSize: 24 }]}>Hola, {user?.name || 'mamá'} <Text>💗</Text></Text></View>
-        <Pressable onPress={() => router.push('/notifications')}><Ionicons name="notifications-outline" size={24} color={colors.text} /></Pressable>
-      </View>
-      <Text style={[styles.body, { color: colors.mutedForeground, marginBottom: 15 }]}>¿Cómo te sientes hoy?</Text>
-      <Card tone="lilac" style={{ paddingVertical: 20 }}>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <View style={{ flex: 1 }}><Text style={{ color: colors.text, fontSize: 18, fontWeight: '700' }}>No tienes que pasar por esto sola.</Text><Text style={{ color: colors.text, lineHeight: 20, marginTop: 5 }}>Un momento para escucharte puede cambiar tu día.</Text></View>
-          <Ionicons name="heart" size={42} color={colors.lilacDark} />
+        <View style={{ marginLeft: 12, flex: 1 }}>
+          <Text style={{ color: colors.text, fontSize: 24, fontWeight: '700' }}>Hola, {user?.name || 'mamá'} 💗</Text>
+          <Text style={{ color: colors.mutedForeground, fontSize: 16, marginTop: 4 }}>¿Cómo te sientes hoy?</Text>
         </View>
+      </View>
+      <Card tone="lilac" style={{ padding: 20, marginBottom: 20 }}>
+        <Text style={{ color: colors.text, fontSize: 18, fontWeight: '700', lineHeight: 23, textAlign: 'center' }}>Recuerda: no tienes que pasar por esto sola.</Text>
       </Card>
       <SectionTitle title="Accesos rápidos" />
-      <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-        {quickActions.map((item) => <Card key={item.title} tone={item.tone} onPress={() => router.push(item.route as never)} style={{ width: '48%', minHeight: 137, justifyContent: 'space-between' }}>
-          <Ionicons name={item.icon} size={24} color={colors.lilacDark} />
-          <View><Text style={{ color: colors.text, fontWeight: '700', fontSize: 14 }}>{item.title}</Text><Text style={{ color: colors.mutedForeground, fontSize: 12, marginTop: 4 }}>{item.subtitle}</Text></View>
+      <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
+        {quickActions.map((item, index) => <Card key={item.title} tone={item.tone} onPress={() => router.push(item.route as never)} style={[{ width: '48%', minHeight: 120, padding: 16, borderRadius: 20, alignItems: 'center', justifyContent: 'center' }, index === 7 && { backgroundColor: colors.muted }]}>
+          <Ionicons name={item.icon} size={32} color={colors.lilacDark} />
+          <Text numberOfLines={2} ellipsizeMode="tail" style={{ color: colors.text, fontSize: 14, fontWeight: '600', textAlign: 'center', marginTop: 10 }}>{item.title}</Text>
         </Card>)}
       </View>
     </Screen>

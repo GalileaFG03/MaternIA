@@ -1,0 +1,78 @@
+CORREGIR EL DISEÑO DEL GRID EN HomeScreen.tsx
+
+Problema actual: las tarjetas de "Accesos rápidos" en HomeScreen están demasiado angostas, el texto se rompe en muchas líneas y se ve mal (ej: "Chec k-in diario", "Mi bie ne sta r", "Au toc uid ad o"). Además hay un icono de engrane suelto que se ve mal.
+
+Corregir así:
+
+1. GRID DE ACCESOS RÁPIDOS
+
+En HomeScreen.tsx, cambia el grid de 2 columnas por un grid de 2 columnas con tarjetas MÁS ANCHAS y texto legible.
+
+Cada tarjeta debe:
+- Ocupar el 48% del ancho (2 columnas con espacio entre ellas)
+- Tener padding: 16
+- Tener minHeight: 120
+- Tener borderRadius: 20
+- Alinear contenido al centro (alignItems: 'center', justifyContent: 'center')
+- Tener el icono arriba (tamaño 32)
+- Tener el título debajo del icono con:
+  * fontSize: 14
+  * fontWeight: '600'
+  * textAlign: 'center'
+  * numberOfLines={2} (máximo 2 líneas)
+  * NO permitir que se rompa palabra por palabra
+- NO mostrar subtítulo en las tarjetas (quitar "Cuéntame cómo estás", "Cuestionarios", "Para usarla ti", "Apoyo cerca", etc.) — solo icono + título
+
+Títulos de las 8 tarjetas (cortos, máximo 2 líneas):
+1. Check-in diario (icono heart)
+2. Mi bienestar (icono sparkles)
+3. Autocuidado (icono leaf)
+4. Especialistas (icono location)
+5. Mis citas (icono calendar)
+6. Recursos (icono book)
+7. Apple Salud (icono watch)
+8. Configuración (icono settings)
+
+Colores de fondo de cada tarjeta (alternar):
+1. mint (#A8E6CF)
+2. lilac (#C9B6E4)
+3. beigeDark (#E8D9C3)
+4. white (#FFFFFF)
+5. white (#FFFFFF)
+6. lilac (#C9B6E4)
+7. mint (#A8E6CF)
+8. grayLight (#F2F2F2)
+
+2. QUITAR EL ENGRANE SUELTO
+
+En HomeScreen, quitar cualquier icono de engrane (settings) que esté suelto en la esquina superior derecha. La configuración ya está dentro del grid como la tarjeta 8.
+
+3. TARJETA DE RECORDATORIO
+
+La tarjeta lila con "Recuerda: no tienes que pasar por esto sola." debe:
+- Tener padding: 20
+- Texto centrado
+- Fondo lila (#C9B6E4)
+- borderRadius: 20
+- marginBottom: 20
+
+4. SALUDO CON LOGO
+
+Arriba del grid, mostrar en una fila:
+- Logo pequeño (60x60) a la izquierda
+- Texto "Hola, [nombre] 💗" al lado (fontSize 24, fontWeight '700')
+- Debajo: "¿Cómo te sientes hoy?" (fontSize 16, color gris)
+
+5. AJUSTES GENERALES
+
+- El ScrollView debe tener paddingHorizontal: 20, paddingBottom: 100
+- Los títulos de sección (ej: "Accesos rápidos") deben tener:
+  * fontSize: 18
+  * fontWeight: '700'
+  * marginTop: 20
+  * marginBottom: 12
+- Espacio entre tarjetas del grid: 12px horizontal y vertical
+- NO permitir que el texto se corte con guiones raros
+- Usar numberOfLines={2} y ellipsizeMode="tail" en los títulos de las tarjetas
+
+Aplica los cambios en src/screens/HomeScreen.tsx y dame el archivo completo corregido.

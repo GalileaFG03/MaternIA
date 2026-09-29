@@ -18,7 +18,7 @@ import { useColors } from '@/hooks/useColors';
 export function Screen({ children, scroll = true }: { children: React.ReactNode; scroll?: boolean }) {
   const colors = useColors();
   const insets = useSafeAreaInsets();
-  const content = <View style={[styles.screen, { backgroundColor: colors.background, paddingTop: insets.top + 12, paddingBottom: insets.bottom + 92 }]}>{children}</View>;
+  const content = <View style={[styles.screen, { backgroundColor: colors.background, paddingTop: insets.top + 12, paddingBottom: insets.bottom + 100 }]}>{children}</View>;
   return scroll ? <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll}>{content}</ScrollView> : content;
 }
 
@@ -113,7 +113,7 @@ export const styles = StyleSheet.create({
   label: { fontSize: 13, fontWeight: '600', marginBottom: 7 },
   input: { minHeight: 50, borderWidth: 1, borderRadius: 15, paddingHorizontal: 15, fontSize: 15 },
   card: { borderRadius: 20, padding: 17, marginBottom: 13, shadowColor: '#3A3A3A', shadowOpacity: 0.05, shadowRadius: 10, shadowOffset: { width: 0, height: 4 }, elevation: 2 },
-  sectionRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 17, marginBottom: 11 },
+  sectionRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 20, marginBottom: 12 },
   sectionTitle: { fontSize: 18, fontWeight: '700' },
   action: { fontSize: 13, fontWeight: '700' },
   empty: { alignItems: 'center', padding: 28, borderRadius: 20, backgroundColor: '#FFFFFF' },

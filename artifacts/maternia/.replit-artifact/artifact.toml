@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/maternia/"
+title = "MaternIA"
+description = "Aplicación móvil en español de acompañamiento emocional para mujeres embarazadas y en posparto, con check-ins, cuestionarios de bienestar, autocuidado, comunidad y una arquitectura preparada para Apple Salud."
+version = "1.0.0"
+id = "artifacts/maternia"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/maternia/" ]
+localPort = 24754
+
+[services.development]
+run = "pnpm --filter @workspace/maternia run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/maternia", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/maternia", "run", "serve" ]
+
+[services.env]
+PORT = "24754"
+BASE_PATH = "/maternia/"

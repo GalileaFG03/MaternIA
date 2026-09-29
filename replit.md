@@ -1,11 +1,13 @@
-# [Project name]
+# MaternIA
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Aplicación móvil en español de acompañamiento emocional para mujeres embarazadas y en posparto.
 
 ## Run & Operate
 
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
 - `pnpm run typecheck` — full typecheck across all packages
+- `pnpm --filter @workspace/maternia run typecheck` — typecheck the Expo mobile app
+- `pnpm --filter @workspace/maternia run dev` — start the Expo preview (use the managed workflow for QR access)
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
@@ -22,15 +24,28 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/maternia/app/` — Expo Router routes for auth, tabs, questionnaires, self-care, community and settings.
+- `artifacts/maternia/components/Screens.tsx` — screen implementations and local AsyncStorage flows.
+- `artifacts/maternia/components/UI.tsx` — shared brand components and styling.
+- `artifacts/maternia/context/AppContext.tsx` — user and stage persistence.
+- `artifacts/maternia/services/healthKitService.ts` — native-free HealthKit boundary for Expo Go.
+- `artifacts/maternia/services/storage.ts` — AsyncStorage keys and JSON helpers.
+- `artifacts/maternia/constants/colors.ts` — MaternIA mint, beige and lilac theme tokens.
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The first build is frontend-only and uses AsyncStorage, matching the Expo Go requirement.
+- HealthKit is isolated behind a native-free service so Expo Go can show the correct unavailable/demo state.
+- Maps use telephone and geo deep links instead of `react-native-maps`, avoiding native compilation.
+- Auth is intentionally local demo onboarding because the requested flow stores only name and email locally.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Guided onboarding for pregnancy or postpartum stage.
+- Daily mood check-ins with local emotional history.
+- PHQ-9 and EPDS screening flows with saved results and clear non-diagnostic language.
+- Breathing exercise, self-care library, resources, specialist demo directory, appointments and community posts.
+- Apple Salud connection boundary with an Expo Go simulation and privacy-first messaging.
 
 ## User preferences
 

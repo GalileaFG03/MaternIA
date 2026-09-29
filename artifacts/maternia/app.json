@@ -1,0 +1,30 @@
+{
+  "expo": {
+    "name": "MaternIA",
+    "slug": "maternia",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "maternia",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anaflores.maternia",
+      "infoPlist": {
+        "NSHealthShareUsageDescription": "MaternIA lee tu frecuencia cardíaca, sueño y pasos para acompañarte durante el embarazo y posparto.",
+        "NSHealthUpdateUsageDescription": "MaternIA no escribe datos en Apple Salud."
+      }
+    },
+    "android": {
+      "package": "com.anaflores.maternia"
+    },
+    "web": {
+      "favicon": "./assets/images/icon.png"
+    },
+    "plugins": ["expo-router"],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

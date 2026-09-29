@@ -224,14 +224,28 @@ export function HomeView() {
         </View>
       </View>
       <Card tone="lilac" style={{ padding: 20, marginBottom: 20 }}>
-        <Text style={{ color: colors.text, fontSize: 18, fontWeight: '700', lineHeight: 23, textAlign: 'center' }}>Recuerda: no tienes que pasar por esto sola.</Text>
+        <View style={{ alignItems: 'center' }}>
+          <View style={{ width: 38, height: 38, borderRadius: 19, backgroundColor: colors.white, alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
+            <Ionicons name="heart" size={20} color={colors.lilacDark} />
+          </View>
+          <Text style={{ color: colors.text, fontSize: 18, fontWeight: '700', lineHeight: 23, textAlign: 'center' }}>Recuerda: no tienes que pasar por esto sola.</Text>
+        </View>
       </Card>
       <SectionTitle title="Accesos rápidos" />
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 12 }}>
-        {quickActions.map((item, index) => <Card key={item.title} tone={item.tone} onPress={() => router.push(item.route as never)} style={[{ width: '48%', minHeight: 120, padding: 16, borderRadius: 20, alignItems: 'center', justifyContent: 'center' }, index === 7 && { backgroundColor: colors.muted }]}>
-          <Ionicons name={item.icon} size={32} color={colors.lilacDark} />
-          <Text numberOfLines={2} ellipsizeMode="tail" style={{ color: colors.text, fontSize: 14, fontWeight: '600', textAlign: 'center', marginTop: 10 }}>{item.title}</Text>
-        </Card>)}
+        {quickActions.map((item, index) => {
+          const iconBackground = item.tone === 'card' ? colors.beige : colors.white;
+          const iconColor = item.tone === 'lilac' ? colors.lilacDark : colors.mintDark;
+          return (
+            <Card key={item.title} tone={item.tone} onPress={() => router.push(item.route as never)} style={[{ width: '48%', minHeight: 120, padding: 16, borderRadius: 20, alignItems: 'center', justifyContent: 'center', overflow: 'hidden', marginBottom: 0 }, index === 7 && { backgroundColor: colors.muted }]}>
+              <View pointerEvents="none" style={{ position: 'absolute', width: 86, height: 86, borderRadius: 43, right: -22, top: -25, backgroundColor: colors.white, opacity: 0.24 }} />
+              <View style={{ width: 50, height: 50, borderRadius: 17, backgroundColor: iconBackground, alignItems: 'center', justifyContent: 'center', shadowColor: colors.text, shadowOpacity: 0.08, shadowRadius: 7, shadowOffset: { width: 0, height: 3 }, elevation: 2 }}>
+                <Ionicons name={item.icon} size={29} color={iconColor} />
+              </View>
+              <Text numberOfLines={2} ellipsizeMode="tail" style={{ color: colors.text, fontSize: 14, fontWeight: '700', lineHeight: 19, textAlign: 'center', marginTop: 10 }}>{item.title}</Text>
+            </Card>
+          );
+        })}
       </View>
     </Screen>
   );

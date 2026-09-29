@@ -44,14 +44,14 @@ const moodOptions = [
 ];
 
 const quickActions: Array<{ title: string; icon: keyof typeof Ionicons.glyphMap; route: string; tone: 'mint' | 'lilac' | 'beige' | 'card' }> = [
-  { title: 'Check-in diario', icon: 'heart', route: '/check-in', tone: 'mint' },
-  { title: 'Mi bienestar', icon: 'sparkles', route: '/wellbeing', tone: 'lilac' },
-  { title: 'Autocuidado', icon: 'leaf', route: '/selfcare', tone: 'beige' },
-  { title: 'Especialistas', icon: 'location', route: '/map', tone: 'card' },
-  { title: 'Mis citas', icon: 'calendar', route: '/appointments', tone: 'card' },
-  { title: 'Recursos', icon: 'book', route: '/resources', tone: 'lilac' },
-  { title: 'Apple Salud', icon: 'watch', route: '/health', tone: 'mint' },
-  { title: 'Configuración', icon: 'settings', route: '/settings', tone: 'card' },
+  { title: 'Check-in diario', icon: 'heart-outline', route: '/check-in', tone: 'mint' },
+  { title: 'Mi bienestar', icon: 'pulse-outline', route: '/wellbeing', tone: 'lilac' },
+  { title: 'Autocuidado', icon: 'leaf-outline', route: '/selfcare', tone: 'beige' },
+  { title: 'Especialistas', icon: 'people-outline', route: '/map', tone: 'card' },
+  { title: 'Mis citas', icon: 'calendar-outline', route: '/appointments', tone: 'card' },
+  { title: 'Recursos', icon: 'book-outline', route: '/resources', tone: 'lilac' },
+  { title: 'Apple Salud', icon: 'heart-circle-outline', route: '/health', tone: 'mint' },
+  { title: 'Configuración', icon: 'settings-outline', route: '/settings', tone: 'card' },
 ];
 
 const phqQuestions = [

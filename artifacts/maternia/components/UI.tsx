@@ -71,8 +71,10 @@ export function Input({ label, ...props }: { label: string } & TextInputProps) {
 export function Card({ children, onPress, tone = 'card', style }: { children: React.ReactNode; onPress?: () => void; tone?: 'card' | 'lilac' | 'mint' | 'beige'; style?: object }) {
   const colors = useColors();
   const backgroundColor = tone === 'lilac' ? colors.lilac : tone === 'mint' ? colors.mint : tone === 'beige' ? colors.beige : colors.card;
-  const content = <View style={[styles.card, { backgroundColor }, style]}>{children}</View>;
-  return onPress ? <Pressable onPress={onPress} style={({ pressed }) => [pressed && styles.pressed]}>{content}</Pressable> : content;
+  const cardStyle = [styles.card, { backgroundColor }, style];
+  return onPress
+    ? <Pressable onPress={onPress} style={({ pressed }) => [cardStyle, pressed && styles.pressed]}>{children}</Pressable>
+    : <View style={cardStyle}>{children}</View>;
 }
 
 export function SectionTitle({ title, action, onAction }: { title: string; action?: string; onAction?: () => void }) {
